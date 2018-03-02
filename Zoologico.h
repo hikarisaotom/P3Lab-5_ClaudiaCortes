@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 #include "Animales.h"
-
+#include <string>
 using namespace std;
 
 #ifndef ZOOLOGICO_H
@@ -19,7 +19,9 @@ class Zoologico
     vector<Animales *> zonaDesertica;
     vector<Animales *> junglaTropical;
     vector<Animales *> sabana;
-
+    int tamano;
+    int personas;
+    string Nombre;
     //metodos publicos
   public:
     //prototipos de metodos
@@ -36,7 +38,10 @@ class Zoologico
     void setJunglaTropical(Animales *);
     vector<Animales *> getSabana();
     void setSabana(Animales *);
-
+    void listar();
+    void setnombre(string);
+    void settamano(int);
+    void setpersonas(int);
     //Destructor
     ~Zoologico();
 

@@ -16,7 +16,7 @@ int menu();
 //Prototipos de metodods
 Animales *CrearAnimal();
 void EliminarAnimal(vector<Animales *>);
-void ListarAnimales(Zoologico* Zoo);
+void ListarAnimales(Zoologico *Zoo);
 void TrasladarAnimales(vector<Animales *>, Zoologico *);
 int Tvision();
 int Tipo();
@@ -24,12 +24,24 @@ int Pelos();
 
 int main()
 {
+    string Nombre;
+    int personas;
+    int tamano;
+    cout << "NOMBRE DEL ZOO" << endl;
+    cin >> Nombre;
+    cout << "Capacidad de personas" << endl;
+    cin >> personas;
+    cout << "Tamano del zoo" << endl;
+    cin >> tamano;
 
     //Zoologico Global que tendra todos los a imale.s
     //Zoologico Zoo;
     //Lista de espera de los animales al zoologico.
     vector<Animales *> Espera;
     Zoologico *Zoo = new Zoologico();
+    Zoo->setnombre(Nombre);
+    Zoo->settamano(personas);
+    Zoo->setpersonas(tamano);
     bool Continuar = 1;
     while (Continuar)
     {
@@ -74,34 +86,41 @@ int main()
 
                 delete Espera[Pos];
                 Espera[Pos] = NULL;
-                cout << endl<< "ANIMAL ELIMINADO EXITOSAMENTE :D " << endl;
+                cout << endl
+                     << "ANIMAL ELIMINADO EXITOSAMENTE :D " << endl;
             }
-            else {
-                cout<<"NO SE HAY NADA QUE ELIMINAR :C"<<endl;
+            else
+            {
+                cout << "NO SE HAY NADA QUE ELIMINAR :C" << endl;
             }
             break;
         } //Fin del case 2
 
         case 3:
         { //Transferir
-            TrasladarAnimales(Espera,Zoo);
-             break;
+            TrasladarAnimales(Espera, Zoo);
+            break;
         } //Fin del case 3
 
         case 4:
         { //Listar
-
+            //ListarAnimales(Zoo);
+            Zoo->listar();
             break;
         } //Fin del case 4.
         case 5:
         { //Listar
             Continuar = false;
-
+            // ListarAnimales(Zoo);
+            cout << "SALIENDO...." << endl;
+            delete Zoo;
             break;
         } //Fin del case 4.
         default:
         { //SALIR
             Continuar = 0;
+
+            //  delete [] Espera;
             break;
         } //FIn del default
 
@@ -205,28 +224,55 @@ void EliminarAnimal(vector<Animales *> Lista)
     }
 
     delete Lista[Pos];
-    Lista.erase(Lista.begin()+Pos);
+    Lista.erase(Lista.begin() + Pos);
     cout << endl
          << "ANIMAL ELIMINADO EXITOSAMENTE :D " << endl;
 }
 
 void ListarAnimales(Zoologico *Zoo)
 {
+    /*cout<<"JUNGLA TROPICAL."<<endl;
+    for(int i=0;i<((Zoo->getJunglaTropical).size;i++){
+        cout << (Zoo->getJunglaTropical)[i];
+    }*/
 }
 void TrasladarAnimales(vector<Animales *> Lista, Zoologico *Zoo)
 {
+    /*< "1-Artico." << endl
+                 << "2-Desertico." << endl
+                 << "3-Tropical." << endl
+                 << "4-Sabana." << endl;*/
+    for (int i = 0; i < Lista.size(); i++)
+    {
+        if (Lista[i]->getTipo() == 1)
+        { //Artico
+            Zoo->setZonaArtica(Lista[i]);
+        }
+        else if (Lista[i]->getTipo() == 2) //Desertico
+        {
+            Zoo->setZonaDesertica(Lista[i]);
+        }
+        else if (Lista[i]->getTipo() == 3)
+        { //Tropical
+            Zoo->setJunglaTropical(Lista[i]);
+        }
+        else
+        { //Es el Sabana
+            Zoo->setSabana(Lista[i]);
+        }
+    }
+    cout << "SE HA TRASLADADO TODO CORRECTAMENTE" << endl;
 }
-
 int Tipo()
 {
     int opcion = -1;
     while (opcion < 1 || opcion > 4)
     {
         cout << "Ingrese que tipo de animal es: " << endl;
-        cout << "1-Árticos." << endl
-             << "2-Desérticos." << endl
-             << "3-Tropicales." << endl
-             << "4-Sabana" << endl;
+        cout << "1-Artico." << endl
+             << "2-Desertico." << endl
+             << "3-Tropical." << endl
+             << "4-Sabana." << endl;
         cin >> opcion;
     }
     return opcion;
@@ -257,39 +303,3 @@ int Pelos()
     }
     return Tipo;
 }
-
-/*
-    vector<Persona*> personas;
-
-    personas.push_back(new FireBender("pp","rasdsa", 9, "t", 8,6));
-    personas.push_back(new FireBender("pp","asda", 9, "t", 8,6));
-    personas.push_back(new Persona("c","rooko", 9, "t"));
-
-    for(int i = 0; i<personas.size(); i++){
-        cout<< personas[i]->getNombre() << endl;
-
-    }
-
-
-    for(int i = 0; i<personas.size(); i++){
-        if(typeid(*personas[i]) == typeid(FireBender)){
-            cout<< "sii "<< endl;
-        }
-        
-       // cout<< typeid(FireBender).name()<< endl;
-        //cout<< typeid(*personas[i]).name()<< endl;
-    }
-
-    delete personas[2];
-    personas[2] = NULL;
-
-    for(int i =0; i< personas.size(); i++){
-        if(personas[i] == NULL){
-            cout<< "vacio" << endl;
-        }else{
-            personas[i]->setNombre("ahora");
-            cout<< personas[i]->getNombre() << i<< endl;
-        }
-    }
-
-    */

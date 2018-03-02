@@ -1,22 +1,17 @@
-//Metodo sets ade gets
+
 
 #include "Zoologico.h"
 #include <iostream>
 #include <string>
 #include "Animales.h"
 using namespace std;
+#include <string>
 
-//Cosntructor 1
-/*Zoologico::Zoologico(vector<Animales *> zonaArtica,vector<Animales *> zonaDesertica,vector<Animales *> junglaTropical,vector<Animales *> sabana){
-    this->zonaArtica=zonaArtica;
-    this->zonaDesertica=zonaDesertica;
-    this->junglaTropical=junglaTropical;
-    this->sabana=sabana;
-}//Fin constructor*/
-
-//Constructor2
 Zoologico::Zoologico()
 {
+    tamano = 1;
+    personas = 2;
+    Nombre = "ZOO 1";
     vector<Animales *> zonaArtica;
     vector<Animales *> zonaDesertica;
     vector<Animales *> junglaTropical;
@@ -66,6 +61,46 @@ void Zoologico::setSabana(Animales *Animal)
 
     sabana.push_back(Animal);
     ;
+}
+void Zoologico::listar()
+{
+    cout << "LISTANDO" << endl;
+    cout << "Sabana" << endl;
+    for (int i = 0; i < sabana.size(); i++)
+    {
+        cout << sabana[i]->toString() << endl;
+    }
+    cout << "Jungla Tropical" << endl;
+    for (int i = 0; i < junglaTropical.size(); i++)
+    {
+        cout << junglaTropical[i]->toString() << endl;
+    }
+    cout << "Desierto" << endl;
+    for (int i = 0; i < zonaDesertica.size(); i++)
+    {
+        cout << zonaDesertica[i]->toString() << endl;
+    }
+
+    cout << "Artico" << endl;
+    for (int i = 0; i < zonaArtica.size(); i++)
+    {
+        cout << zonaArtica[i]->toString() << endl;
+    }
+}
+
+void Zoologico::setnombre(string name)
+{
+    Nombre = name;
+}
+
+void Zoologico::settamano(int tam)
+{
+    tamano = tam;
+}
+
+void Zoologico::setpersonas(int per)
+{
+    personas = per;
 }
 
 Zoologico::~Zoologico()
