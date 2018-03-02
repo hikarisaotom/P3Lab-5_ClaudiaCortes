@@ -16,19 +16,20 @@ int menu();
 //Prototipos de metodods
 Animales *CrearAnimal();
 void EliminarAnimal(vector<Animales *>);
-void ListarAnimales(vector<Animales *>);
-void TrasladarAnimales(vector<Animales *>);
+void ListarAnimales(Zoologico* Zoo);
+void TrasladarAnimales(vector<Animales *>, Zoologico *);
 int Tvision();
 int Tipo();
 int Pelos();
 
 int main()
 {
+
     //Zoologico Global que tendra todos los a imale.s
-    // Zoologico Zoo;
+    //Zoologico Zoo;
     //Lista de espera de los animales al zoologico.
     vector<Animales *> Espera;
-
+    Zoologico *Zoo = new Zoologico();
     bool Continuar = 1;
     while (Continuar)
     {
@@ -38,7 +39,8 @@ int main()
         case 1:
         { // Agregar
             Espera.push_back(CrearAnimal());
-            cout<< endl<< "ANIMAL CREADO EXITOSAMENTE" << endl;
+            cout << endl
+                 << "ANIMAL CREADO EXITOSAMENTE" << endl;
             /* for (int i = 0; i < Espera.size(); i++)
             {
                 cout << Espera[i]->getNombre() << endl
@@ -48,14 +50,42 @@ int main()
         } //Fin del case 1.
         case 2:
         { // Eliminar.
-            EliminarAnimal(Espera);
+            // EliminarAnimal(Espera);
+            if (Espera.size() > 0)
+            {
+                int Pos = -150;
+                while (Pos < 0 && Pos > Espera.size())
+                {
+
+                    for (int i = 0; i < Espera.size(); i++)
+                    {
+                        if (Espera[i] == NULL)
+                        {
+                            //cout << "--" << endl;
+                        }
+                        else
+                        {
+                            cout << i << Espera[i]->toString() << endl;
+                        }
+                    }
+                    cout << "Ingrese la posicion que desea eliminar: " << endl;
+                    cin >> Pos;
+                }
+
+                delete Espera[Pos];
+                Espera[Pos] = NULL;
+                cout << endl<< "ANIMAL ELIMINADO EXITOSAMENTE :D " << endl;
+            }
+            else {
+                cout<<"NO SE HAY NADA QUE ELIMINAR :C"<<endl;
+            }
             break;
         } //Fin del case 2
 
         case 3:
         { //Transferir
-
-            break;
+            TrasladarAnimales(Espera,Zoo);
+             break;
         } //Fin del case 3
 
         case 4:
@@ -153,12 +183,12 @@ Animales *CrearAnimal()
     // return Animal;
 }
 
-void EliminarAnimal(vector<Animales*> Lista)
+void EliminarAnimal(vector<Animales *> Lista)
 {
     int Pos = -150;
     while (Pos < 0 && Pos > Lista.size())
     {
-       
+
         for (int i = 0; i < Lista.size(); i++)
         {
             if (Lista[i] == NULL)
@@ -167,23 +197,23 @@ void EliminarAnimal(vector<Animales*> Lista)
             }
             else
             {
-                cout << i << Lista[i]->toString()<<endl;
+                cout << i << Lista[i]->toString() << endl;
             }
-            
         }
         cout << "Ingrese la posicion que desea eliminar: " << endl;
         cin >> Pos;
     }
-   
+
     delete Lista[Pos];
-    Lista[Pos] = NULL;
-    cout<<"ANIMAL ELIMINADO EXITOSAMENTE :D "<<endl;
+    Lista.erase(Lista.begin()+Pos);
+    cout << endl
+         << "ANIMAL ELIMINADO EXITOSAMENTE :D " << endl;
 }
 
-void ListarAnimales(vector<Animales *> LIsta)
+void ListarAnimales(Zoologico *Zoo)
 {
 }
-void TrasladarAnimales(vector<Animales *> Lista)
+void TrasladarAnimales(vector<Animales *> Lista, Zoologico *Zoo)
 {
 }
 

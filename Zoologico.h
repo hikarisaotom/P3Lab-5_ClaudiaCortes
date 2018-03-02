@@ -9,40 +9,37 @@ using namespace std;
 #ifndef ZOOLOGICO_H
 #define ZOOLOGICO_H
 
-
 //Inicio clase
-class Zoologico{
+class Zoologico
+{
 
     //Atributos
-    private:
-        vector<Animales *> zonaArtica;
-        vector<Animales *> zonaDesertica;
-        vector<Animales *> junglaTropical;
-        vector<Animales *> sabana;
-
+  private:
+    vector<Animales *> zonaArtica;
+    vector<Animales *> zonaDesertica;
+    vector<Animales *> junglaTropical;
+    vector<Animales *> sabana;
 
     //metodos publicos
-    public:
-        //prototipos de metodos
-        //constructor
-        Zoologico();
-        Zoologico(vector<Animales *>,vector<Animales *>,vector<Animales *>,vector<Animales *>);
+  public:
+    //prototipos de metodos
+    //constructor
+    Zoologico();
+    //Zoologico(vector<Animales *>,vector<Animales *>,vector<Animales *>,vector<Animales *>);
 
-        //metodos accersores / mutadores
-        vector<Animales *> getZonaArtica();
-        void setZonaArtica(vector<Animales *>);
-        vector<Animales *> getZonaDesertica();
-        void setZonaDesertica(vector<Animales *>);
-        vector<Animales *> getJunglaTropical();
-        void setJunglaTropical(vector<Animales *>);
-        vector<Animales *> getSabana();
-        void setSabana(vector<Animales *>);
+    //metodos accersores / mutadores
+    vector<Animales *> getZonaArtica();
+    void setZonaArtica(Animales *);
+    vector<Animales *> getZonaDesertica();
+    void setZonaDesertica(Animales *);
+    vector<Animales *> getJunglaTropical();
+    void setJunglaTropical(Animales *);
+    vector<Animales *> getSabana();
+    void setSabana(Animales *);
 
     //Destructor
     ~Zoologico();
 
-
-};//Fin de la clase
-
+}; //Fin de la clase
 
 #endif

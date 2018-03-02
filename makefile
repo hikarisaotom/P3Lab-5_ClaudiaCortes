@@ -1,5 +1,5 @@
-RUN: Main.o Animales.o Patas.o Pelaje.o Ojos.o Orejas.o Cola.o
-	g++ Main.o Animales.o Patas.o Pelaje.o Ojos.o Orejas.o Cola.o -o RUN
+RUN: Main.o Animales.o Patas.o Pelaje.o Ojos.o Orejas.o Cola.o Zoologico.o
+	g++ Main.o Animales.o Patas.o Pelaje.o Ojos.o Orejas.o Cola.o Zoologico.o -o RUN
 
 Main.o: Main.cpp Animales.h Patas.h Pelaje.h Ojos.h Orejas.h Cola.h
 	g++ -c Main.cpp
@@ -18,4 +18,6 @@ Ojos.o: Ojos.h Ojos.cpp
 
 Orejas.o: Orejas.h Orejas.cpp
 	g++ -c Orejas.cpp
+Zoologico.o: Zoologico.h Zoologico.cpp Animales.h
+	g++ -c Zoologico.cpp
 
