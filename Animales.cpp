@@ -126,7 +126,7 @@ Animales::~Animales(){
 
 }
 
-string Animales:: Animales(){
+string Animales:: toString(){
     string retValue;
     stringstream str;
     str<<"Especie: "<<especie<<",  Nombre: "<<nombre<<", Tamaño: "<<tamanio<<", Tipo: "<<tipo;
