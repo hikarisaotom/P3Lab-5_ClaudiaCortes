@@ -91,7 +91,7 @@ int main()
             }
             else
             {
-                cout << "NO SE HAY NADA QUE ELIMINAR :C" << endl;
+                cout << "NO  HAY NADA QUE ELIMINAR :C" << endl;
             }
             break;
         } //Fin del case 2
@@ -99,6 +99,12 @@ int main()
         case 3:
         { //Transferir
             TrasladarAnimales(Espera, Zoo);
+            for (int i = 0; i < Espera.size(); i++)
+            {
+                // delete Lista[i];
+                Espera.erase(Espera.begin() + i);
+            }
+            Espera.clear();
             break;
         } //Fin del case 3
 
@@ -261,6 +267,14 @@ void TrasladarAnimales(vector<Animales *> Lista, Zoologico *Zoo)
             Zoo->setSabana(Lista[i]);
         }
     }
+
+    for (int i = 0; i < Lista.size(); i++)
+    {
+        // delete Lista[i];
+        Lista.erase(Lista.begin() + i);
+    }
+    Lista.clear();
+
     cout << "SE HA TRASLADADO TODO CORRECTAMENTE" << endl;
 }
 int Tipo()
